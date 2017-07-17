@@ -16,8 +16,8 @@ The Spring Data MongoDB project provides integration with the MongoDB document d
 Spring configuration support using Java based @Configuration classes or an XML namespace for a Mongo driver instance and replica sets.
 
 
-With Spring Data, we don't have to write DAO implementations anymore. Spring Data manages this for us. To leverage power of Spring Data managed DAO, we need to extends an interface 'MongoRepository' in our Repository interface. The basic CRUD opertions are default managed. In order to add more functionality and Queries, we can declare our own methods. 
-The best part is, we do not need to provide an implementation of these methods. These declared methods are declared in such a way that it reads like a Query. For Example, in our used program, in case we want to find a book by its Author, we will declare a method 'findByAuthor(String author)' where 'Author' is a property of BookDetails class. and that's all.
+With Spring Data, we don't have to write DAO implementations anymore. Spring Data manages this for us. To leverage power of Spring Data managed DAO, we need to extends an interface 'MongoRepository' in our Repository interface. The basic CRUD opertions are default managed and a lot of magical 'findBy' queries are also provided. In order to add these additional  Queries, we can declare our own methods. 
+The best part is, we do not need to provide an implementation of these methods, and Spring Data manages these 'findBy' queries. These methods are declared in such a way that it reads like a Query. For Example, in our used program, in case we want to find a book by its Author, we will declare a method 'findByAuthor(String author)' where 'Author' is a property of BookDetails class. and that's all.
 Spring Data manages implementation. It forms a query based on method name.
 
 If you are experienced in Java and Spring programming, Most code here is self explanatory. 
