@@ -1,10 +1,8 @@
-package org.nitin1706.practice.springboot.service;
+package org.nitin1706.practice.springboot.bookshelf;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.nitin1706.practice.springboot.model.BookDetails;
-import org.nitin1706.practice.springboot.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +50,17 @@ public class BookShelfService {
 	public boolean removeBookById(String id) {
 		bookRepository.delete(id);
 		return true;
+	}
+
+	public void updateBookDetails(BookDetails bookDetails, String title) {
+		BookDetails bookFound = bookRepository.findOneByTitle(title);
+		if(bookFound != null) {
+			bookFound.setAuthor(bookDetails.getAuthor());
+			bookFound.setPages(bookDetails.getPages());
+			bookFound.setPrice(bookDetails.getPrice());
+			bookFound.setTitle(bookDetails.getTitle());
+		}
+		bookRepository.save(bookFound);
 	}
 
 }

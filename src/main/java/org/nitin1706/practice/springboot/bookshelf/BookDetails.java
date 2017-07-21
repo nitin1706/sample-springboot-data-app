@@ -1,4 +1,4 @@
-package org.nitin1706.practice.springboot.model;
+package org.nitin1706.practice.springboot.bookshelf;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

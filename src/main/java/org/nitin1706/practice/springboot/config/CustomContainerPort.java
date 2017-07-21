@@ -1,4 +1,4 @@
-package org.nitin1706.practice.springboot;
+package org.nitin1706.practice.springboot.config;
 
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;

@@ -1,10 +1,8 @@
-package org.nitin1706.practice.springboot.controller;
+package org.nitin1706.practice.springboot.bookshelf;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.nitin1706.practice.springboot.model.BookDetails;
-import org.nitin1706.practice.springboot.service.BookShelfService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +22,7 @@ public class BookShelfController {
 	}
 	
 	/**
-	 * This is working
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/books")
@@ -41,10 +39,10 @@ public class BookShelfController {
 	}
 	
 	/**
-	 * Add Book Details working
+	 * 
 	 * @return
 	 */
-	@RequestMapping(method=RequestMethod.POST, value="/addBook")
+	@RequestMapping(method=RequestMethod.POST, value="/books")
 	public List<BookDetails> saveBook(@RequestBody BookDetails bookDetails) {
 		//BookDetails addBookNow = new BookDetails("newBook", "myself", 139);
 		bookShelfService.saveBookDetails(bookDetails);
@@ -54,30 +52,34 @@ public class BookShelfController {
 		//return books;
 	}
 	
+	@RequestMapping(method=RequestMethod.PUT, value="/books/{title}")
+	public List<BookDetails> updateBook(@RequestBody BookDetails bookDetails, @PathVariable String title) {
+		bookShelfService.updateBookDetails(bookDetails, title);
+		return bookShelfService.getAllBooks();
+	}
+	
 	/**
-	 * Remove Book by title is not working
+	 * 
 	 * @return
 	 */
-	@RequestMapping("/removeBook/{title}")
+	@RequestMapping(method=RequestMethod.DELETE, value="/books/{title}")
 	public String removeBook(@PathVariable String title) {
 		return ((Boolean)(bookShelfService.removeBookDetails(title))).toString();
 	}
 	
 	/**
-	 * Total Books Count working
 	 * @return
 	 */
-	@RequestMapping("/totalBooksCount")
+	@RequestMapping("/books/total")
 	public String totalBooksCount() {
 		return bookShelfService.booksCount().toString();
 	}
 	
 	/**
-	 * remove by ID is working
 	 * @return
 	 */
-	@RequestMapping("/removeBookById/{id}")
+	/*@RequestMapping("/removeBookById/{id}")
 	public String removeBookByBookId(String id) {
 		return ((Boolean)bookShelfService.removeBookById(id)).toString();
-	}
+	}*/
 }
